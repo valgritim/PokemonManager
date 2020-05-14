@@ -10,7 +10,9 @@ import { registerLocaleData } from '@angular/common';
 import localeFR from '@angular/common/locales/fr';
 import { PokemonComponent } from './composants/pokemon/pokemon.component';
 registerLocaleData(localeFR);
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from './composants/menu/menu.component';
+import { PokemonService } from './services/pokemon.service';
 
 
 @NgModule({
@@ -18,14 +20,15 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     GenerationsComponent,
     PokemonsComponent,
-    PokemonComponent
+    PokemonComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    ReactiveFormsModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'fr'}],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr'}, PokemonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

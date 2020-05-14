@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon',
@@ -7,15 +8,15 @@ import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 })
 export class PokemonComponent implements OnInit {
 
-@Input() pokemon = {};
+@Input() pokemon: any;
 @Output() evenementClicImage = new EventEmitter;
 
-  constructor() { }
+  constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
   }
-clicSurImage(nom: string){
-  this.evenementClicImage.emit(nom);
-}
+  clicSurImage(nom: string){
+    this.evenementClicImage.emit(nom);
+  }
 
 }

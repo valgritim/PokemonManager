@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { MonFormulaire } from 'src/app/classes/mon-formulaire';
+import { FormGroup, FormControl, Validators, PatternValidator } from '@angular/forms';
+
 
 @Component({
   selector: 'app-pokemons',
@@ -9,8 +10,12 @@ import { MonFormulaire } from 'src/app/classes/mon-formulaire';
 })
 export class PokemonsComponent implements OnInit {
   pokemons = [];
-  compte = 0;
-  monFormulaire = new MonFormulaire('');  
+  compte = 0; 
+  patternPerso = "[a-zA-Z]"; 
+  
+  monFormulaire = new FormGroup({
+    nom: new FormControl('',Validators.pattern(this.patternPerso))
+  });
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
@@ -19,11 +24,13 @@ export class PokemonsComponent implements OnInit {
   }
 
   auClicRecherche(nomDuPokemon){
-     this.pokemons = this.pokemonService.rechercherPokemon(nomDuPokemon);
+    this.pokemons = this.pokemonService.rechercherPokemon(nomDuPokemon);
   }
 
-  annulerRecherche(){
-    this.pokemons = this.pokemonService.getPokemons();
-    this.monFormulaire.setRecherche('');
+  annulerRecherche(){    
+   
+    this.pokemons = this.pokemonService.getPokemons();    
+    
   }
+
 }
