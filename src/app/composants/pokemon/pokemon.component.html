@@ -1,0 +1,10 @@
+<ul>
+    <img src="{{ pokemon.img }}" (click)="clicSurImage(pokemon.nom)" alt="Card image cap">
+    <li class="font-weight-bold">{{ pokemon.nom }}</li><hr>           
+    <li *ngIf="pokemon.categorie; else na">Catégorie : {{ pokemon.categorie }}</li>
+    <li *ngIf="pokemon.type; else na">Type : {{ pokemon.type }}</li>
+    <li *ngIf="pokemon.poids; else na">poids : {{ pokemon.poids | number: '1.0-2'}} kg</li>
+    <li *ngIf="pokemon.taille; else na">taille : {{ pokemon.taille | number: '1.0-2'}} m</li>
+    <ng-template #na>N/A</ng-template>                                    
+</ul>           
+

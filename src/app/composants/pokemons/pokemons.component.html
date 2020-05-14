@@ -1,0 +1,26 @@
+
+<div class="container-fluid ml-2">
+    <h2>Les 6 premiers Pokémons</h2>
+    <hr>
+    <h3>Dans l'ordre du Pokédesk:</h3>
+    <br>
+    <p>Nombre de pokemons en base de données: {{ compte }}</p>
+    <!--<p *ngIf="pokemonSelectionne">Le Pokemon sélectionné est : {{ pokemonSelectionne }}</p>-->
+    <p>Rechercher un Pokémon:</p>
+    <form class="col-md-2 d-flex">
+        <input type="text" name="nom" class="form-control" [(ngModel)]="monFormulaire.nom" placeholder="Nom du Pokémon">
+        <a class="btn btn-primary mx-2" (click)="auClicRecherche(monFormulaire.nom)">Rechercher</a>
+        <a class="btn btn-light" (click)="annulerRecherche()">Annuler</a>
+    </form>
+
+    <div class="row">
+        <ul *ngFor="let pokemon of pokemons" class="col-md-3 text-center m-5" style="width: 10rem;">
+            <li>
+                <app-pokemon [pokemon]=pokemon></app-pokemon>
+                
+            </li>
+            
+        </ul>
+    </div>
+    <div *ngIf=pokemons?.length <1 >Aucun Pokemon trouvé</div>
+</div>

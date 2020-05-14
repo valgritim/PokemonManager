@@ -1,0 +1,15 @@
+<p>generations works!</p>
+
+<div class="container">
+    <h2>Générations de Pokémon</h2>
+    <hr>
+<div class="menu">
+    <p>{{ title | uppercase }}</p>
+    <ul>
+        <li *ngFor="let generation of generations">
+            {{ generation }}
+        </li>
+    </ul>
+</div>
+
+</div>

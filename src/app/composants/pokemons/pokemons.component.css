@@ -1,0 +1,12 @@
+.liste{
+    display: flex;
+}
+ul{
+    border:2px solid black;
+    padding-bottom: 15px;
+    padding-right: 40px;
+}
+li{
+    list-style-type: none;
+    justify-content: space-between;
+}
